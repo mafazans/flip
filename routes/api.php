@@ -18,4 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/disburse', 'DisburseController@getDisburseById');
+Route::get('/disburses', 'DisburseController@index');
+Route::get('/disburse/{id}', 'DisburseController@getDisburseById');
+Route::post('/disburse', 'DisburseController@postDisbursement');
+

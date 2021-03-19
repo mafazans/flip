@@ -17,14 +17,16 @@ class CreateDisburseTable extends Migration
             $table->bigInteger('id');
             $table->bigInteger('amount');
             $table->char('status');
-            $table->timestamp('timestamp')->default(\DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('timestamp')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->char('bank_code');
             $table->char('account_number');
             $table->char('beneficiary_name');
             $table->text('remark');
-            $table->text('receipt');
-            $table->timestamp('time_served')->default(\DB::raw('CURRENT_TIMESTAMP'));
+            $table->text('receipt')->nullable();
+            $table->timestamp('time_served')->nullable();
             $table->bigInteger('fee');
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
             $table->primary('id');
         });
     }
